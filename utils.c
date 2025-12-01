@@ -17,8 +17,12 @@ int ft_putstr_len(char *s)
 void ft_putnbr_base(unsigned long n, char *base, int *len)
 {
     unsigned long b = 0;
-    while (base[b]) b++;
+    
+    while (base[b])
+        b++;
+    
     if (n >= b)
         ft_putnbr_base(n / b, base, len);
-    *len += ft_putchar_len(base[n % b]);
+    write(1, &base[n % b], 1);
+    (*len)++;
 }
